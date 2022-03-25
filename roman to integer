@@ -1,0 +1,74 @@
+class Solution {
+    public int romanToInt(String s) {
+         int len =s.length();
+        
+        int result=0;
+        
+        for(int i=0;i<len;i++)
+        {
+           if(i!=len-1)
+           {
+            if(s.charAt(i)=='I'&& s.charAt(i+1)=='V')
+            {
+                result=result+4;
+                i++;
+            }
+            else if(s.charAt(i)=='I'&& s.charAt(i+1)=='X')
+            {
+                result=result+9;
+                i++;
+            }
+             else if(s.charAt(i)=='X'&& s.charAt(i+1)=='L')
+            {
+                result=result+40;
+                i++;
+            }
+            else if(s.charAt(i)=='X'&& s.charAt(i+1)=='C')
+            {
+                result=result+90;
+                i++;
+            }
+            else if(s.charAt(i)=='C'&& s.charAt(i+1)=='D')
+            {
+                result=result+400;
+                i++;
+            }
+            else if(s.charAt(i)=='C'&& s.charAt(i+1)=='M')
+            {
+                result=result+900;
+                i++;
+            }
+            else
+            {
+                result=result+fixedValue(s.charAt(i));
+            }
+        }
+        else
+        {
+            result=result+fixedValue(s.charAt(i));
+        }   
+        }
+        
+        return result;
+        
+    }
+ public int fixedValue(char input)
+ {
+     switch(input)
+     {
+              case 'I':return 1;
+              case 'V':return 5;
+              case 'X':return 10;
+              case 'L':return 50;
+              case 'C':return 100;
+              case 'D':return 500;
+              case 'M':return 1000;
+             default:
+            return -1;
+             
+     }
+       
+        
+       
+ }
+}
